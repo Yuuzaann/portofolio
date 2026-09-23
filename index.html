@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya Permadi | Informatics Engineering Student & Software Developer</title>
+    <meta name="description" content="Portfolio of Arya Permadi (Sadutzz) — Informatics Engineering Student & Software Developer specializing in web applications, bot automation, Node.js, PHP, Laravel, PostgreSQL, Docker, and MySQL.">
+    <meta name="keywords" content="Arya Permadi, Sadutzz, Mahasiswa Teknik Informatika, Informatics Engineering, Software Developer, Web Developer, Yorozu Bot, Node.js, Laravel, PostgreSQL, Docker">
+    <meta name="author" content="Arya Permadi">
+    <link rel="canonical" href="https://portfolio.yuuzan.qzz.io">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio.yuuzan.qzz.io">
+    <meta property="og:title" content="Arya Permadi | Informatics Engineering Student & Software Developer">
+    <meta property="og:description" content="Explore project showcases, technical skills, and credentials of Arya Permadi — Informatics Engineering Student & Software Developer.">
+    <meta property="og:image" content="./assets/icon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://portfolio.yuuzan.qzz.io">
+    <meta property="twitter:title" content="Arya Permadi | Informatics Engineering Student & Software Developer">
+    <meta property="twitter:description" content="Explore project showcases, technical skills, and credentials of Arya Permadi — Informatics Engineering Student & Software Developer.">
+    <meta property="twitter:image" content="./assets/icon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/icon.png">
+    <link rel="apple-touch-icon" href="./assets/icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./output.css">
+
+    <!-- Dark Mode Initial Script to Prevent Flash -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 dark:bg-[#090d16] dark:text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white transition-colors duration-300 relative min-h-screen flex flex-col">
+
+    <!-- Ambient Cursor Glow (Desktop only, throttled with rAF) -->
+    <div id="ambientCursorGlow" aria-hidden="true" class="hidden lg:block opacity-0"></div>
+
+    <!-- Background Grid Pattern -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none -z-10 opacity-70"></div>
+
+    <!-- Ambient Glow Blobs -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/10 dark:bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-0 w-[500px] h-[350px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-3 transition-all duration-300" id="navbarHeader">
+        <div class="max-w-6xl mx-auto">
+            <nav id="navbar" class="flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-2xl glass-panel shadow-sm border border-slate-200/80 dark:border-white/10 transition-all duration-300">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center gap-2 group" aria-label="Arya Permadi Home">
+                    <img src="./assets/logo.png" alt="Sadutzz Logo" class="h-7 w-auto dark:hidden transition-transform duration-200 group-hover:scale-105">
+                    <img src="./assets/logo_dark.png" alt="Sadutzz Logo" class="h-7 w-auto hidden dark:block transition-transform duration-200 group-hover:scale-105">
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <ul class="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-medium text-slate-600 dark:text-slate-300" id="desktopNavLinks">
+                    <li><a href="#about" class="nav-item px-3 py-1.5 rounded-lg hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">About</a></li>
+                    <li><a href="#skills" class="nav-item px-3 py-1.5 rounded-lg hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Skills</a></li>
+                    <li><a href="#projects" class="nav-item px-3 py-1.5 rounded-lg hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">What I've Built</a></li>
+                    <li><a href="#credentials" class="nav-item px-3 py-1.5 rounded-lg hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Certifications</a></li>
+                    <li><a href="#contact" class="nav-item px-3 py-1.5 rounded-lg hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Contact</a></li>
+                </ul>
+
+                <!-- Action Controls: Theme Toggle & CTA -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggleBtn" type="button" aria-label="Toggle theme mode" class="p-2 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100/80 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                        <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+
+                    <!-- Contact CTA -->
+                    <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200 btn-interaction">
+                        <span>Get In Touch</span>
+                        <svg class="w-3.5 h-3.5 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+
+                    <!-- Mobile Menu Hamburger Button -->
+                    <button id="mobileMenuBtn" type="button" aria-label="Open mobile menu" aria-expanded="false" class="md:hidden p-2 rounded-xl text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileDrawer" class="fixed inset-0 z-50 flex justify-end opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true">
+        <div id="drawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+        <div id="drawerPanel" class="relative w-full max-w-xs bg-white dark:bg-[#0f172a] h-full shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 border-l border-slate-200 dark:border-white/10">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10">
+                    <img src="./assets/logo.png" alt="Sadutzz Logo" class="h-6 w-auto dark:hidden">
+                    <img src="./assets/logo_dark.png" alt="Sadutzz Logo" class="h-6 w-auto hidden dark:block">
+                    <button id="drawerCloseBtn" type="button" aria-label="Close menu" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-white/5">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <ul class="flex flex-col gap-2 mt-6 text-base font-medium">
+                    <li><a href="#about" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-500">About Me</a></li>
+                    <li><a href="#skills" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-500">Skills</a></li>
+                    <li><a href="#projects" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-500">What I've Built</a></li>
+                    <li><a href="#credentials" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-500">Certifications</a></li>
+                    <li><a href="#contact" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-500">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="pt-6 border-t border-slate-200 dark:border-white/10">
+                <a href="#contact" class="mobile-nav-link flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm">
+                    <span>Send Message</span>
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+                <p class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4">portfolio.yuuzan.qzz.io</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="flex-grow">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero" class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col items-center justify-center text-center">
+            
+            <!-- Availability Eyebrow (Stagger 1) -->
+            <div class="hero-stagger hero-stagger-1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 mb-6 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse-dot"></span>
+                <span>Mahasiswa Teknik Informatika • Available for Opportunities</span>
+            </div>
+
+            <!-- Profile Avatar (Stagger 2) -->
+            <div class="hero-stagger hero-stagger-2 relative mb-6">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-500 to-teal-300 shadow-xl shadow-emerald-500/10">
+                    <img src="./assets/profile-img.png" alt="Arya Permadi" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="absolute bottom-1 right-1 p-1.5 bg-emerald-500 text-white rounded-full shadow-md" title="Teknik Informatika">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Hero Headline (Stagger 3) -->
+            <div class="hero-stagger hero-stagger-3">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl leading-[1.15]">
+                    Hello, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Arya Permadi</span>
+                </h1>
+                <p class="mt-3 text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-300">
+                    Informatics Engineering Student & Software Developer
+                </p>
+                <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                    Undergraduate in <strong class="text-slate-800 dark:text-slate-200">Teknik Informatika</strong> passionate about building web applications, automation bots, and reliable software architectures with clean code.
+                </p>
+            </div>
+
+            <!-- CTA Buttons (Stagger 4) -->
+            <div class="hero-stagger hero-stagger-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8">
+                <a href="#projects" class="btn-interaction inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200">
+                    <span>View What I've Built</span>
+                    <svg class="w-4 h-4 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+
+                <a href="#contact" class="btn-interaction inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-200">
+                    <span>Get in Touch</span>
+                </a>
+
+                <!-- Quick Copy Email Button -->
+                <button id="heroCopyEmailBtn" type="button" class="relative inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-mono-code text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 transition-colors btn-interaction" title="Click to copy email">
+                    <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span id="heroCopyEmailText">arya.permadi.dev@gmail.com</span>
+                    <span id="heroCopyTooltip" class="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 text-xs text-white bg-slate-900 rounded shadow opacity-0 pointer-events-none transition-opacity duration-200">Copied!</span>
+                </button>
+            </div>
+
+            <!-- Social Links Strip -->
+            <div class="hero-stagger hero-stagger-4 flex items-center gap-4 mt-8 pt-6 border-t border-slate-200/60 dark:border-white/10">
+                <a href="https://github.com/Yuuzaann" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all hover:-translate-y-1" aria-label="GitHub Profile">
+                    <img src="./assets/github.png" alt="GitHub" class="w-5 h-5 dark:invert">
+                </a>
+                <a href="https://www.instagram.com/xydutz_/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all hover:-translate-y-1" aria-label="Instagram Profile">
+                    <img src="./assets/instagram.png" alt="Instagram" class="w-5 h-5">
+                </a>
+                <a href="https://x.com/Yuuzaann_" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all hover:-translate-y-1" aria-label="X (Twitter) Profile">
+                    <img src="./assets/X.png" alt="X" class="w-5 h-5 dark:invert">
+                </a>
+                <a href="https://www.tiktok.com/@yuuzaann_" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all hover:-translate-y-1" aria-label="TikTok Profile">
+                    <img src="./assets/tiktok.png" alt="TikTok" class="w-5 h-5">
+                </a>
+            </div>
+
+            <!-- Developer Terminal Specs Card (Stagger 5) -->
+            <div class="hero-stagger hero-stagger-5 w-full max-w-2xl mt-12 text-left rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-white/10 shadow-lg card-hover">
+                <div class="px-4 py-2.5 bg-slate-100/90 dark:bg-white/5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                    </div>
+                    <span class="text-xs font-mono-code text-slate-500 dark:text-slate-400">arya@sadutzz:~ (Teknik Informatika)</span>
+                    <span class="text-xs font-mono-code text-emerald-500">node v24</span>
+                </div>
+                <div class="p-4 sm:p-5 font-mono-code text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1.5 leading-relaxed">
+                    <p><span class="text-emerald-500">const</span> <span class="text-blue-500 dark:text-blue-400">developer</span> = {</p>
+                    <p class="pl-4">name: <span class="text-amber-600 dark:text-amber-300">'Arya Permadi'</span>,</p>
+                    <p class="pl-4">role: <span class="text-amber-600 dark:text-amber-300">'Mahasiswa Teknik Informatika'</span>,</p>
+                    <p class="pl-4">focus: [<span class="text-amber-600 dark:text-amber-300">'Web Applications'</span>, <span class="text-amber-600 dark:text-amber-300">'Bot Automation'</span>, <span class="text-amber-600 dark:text-amber-300">'Database Systems'</span>],</p>
+                    <p class="pl-4">stack: [<span class="text-emerald-600 dark:text-emerald-400">'Node.js'</span>, <span class="text-emerald-600 dark:text-emerald-400">'PHP'</span>, <span class="text-emerald-600 dark:text-emerald-400">'Laravel'</span>, <span class="text-emerald-600 dark:text-emerald-400">'PostgreSQL'</span>, <span class="text-emerald-600 dark:text-emerald-400">'Docker'</span>, <span class="text-emerald-600 dark:text-emerald-400">'MySQL'</span>],</p>
+                    <p class="pl-4">openForOpportunities: <span class="text-emerald-500">true</span></p>
+                    <p>};</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= ABOUT SECTION ================= -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-24">
+            <!-- Section Header -->
+            <div class="reveal mb-12">
+                <p class="text-xs font-mono-code uppercase tracking-wider text-emerald-500 font-semibold">// 01. About Me</p>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                    Engineering, Code & Curiosity
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+                <!-- Left: Portrait Photo Card -->
+                <div class="lg:col-span-5 flex flex-col items-center reveal-left">
+                    <div class="relative w-full max-w-sm rounded-2xl overflow-hidden glass-panel border border-slate-200 dark:border-white/10 shadow-lg group">
+                        <img src="./assets/user-image.png" alt="Arya Permadi" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/20 to-transparent flex flex-col justify-end p-5">
+                            <span class="text-white font-bold text-lg">Arya Permadi</span>
+                            <span class="text-emerald-400 text-xs font-mono-code">Mahasiswa Teknik Informatika</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Detailed Authentic Narrative -->
+                <div class="lg:col-span-7 space-y-6 reveal-right">
+                    <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 leading-relaxed space-y-4 text-sm sm:text-base">
+                        <p>
+                            Saya adalah seorang <strong class="text-slate-900 dark:text-white">Mahasiswa Teknik Informatika (Informatics Engineering)</strong> yang memiliki antusiasme tinggi dalam membangun aplikasi web modern, sistem otomasi, dan arsitektur database yang handal.
+                        </p>
+                        <p>
+                            Berangkat dari fondasi dasar rekayasa perangkat lunak hingga eksplorasi di bangku perkuliahan, saya aktif mengembangkan berbagai proyek nyata — mulai dari <strong class="text-slate-900 dark:text-white">Bot Otomasi WhatsApp & Discord</strong> berskala multi-server, aplikasi manajemen berbasis web menggunakan PHP/Laravel & Node.js, hingga pengelolaan database relasional dengan <strong class="text-slate-900 dark:text-white">PostgreSQL & MySQL</strong> dan kontainerisasi menggunakan <strong class="text-slate-900 dark:text-white">Docker</strong>.
+                        </p>
+                        <p>
+                            Saya selalu fokus pada kebersihan kode (*clean code*), efisiensi performa, dan pemahaman logika sistem dari antarmuka pengguna hingga lapisan database.
+                        </p>
+                    </div>
+
+                    <!-- 3 Feature Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 reveal-stagger">
+                        <div class="p-4 rounded-xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-3">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Fullstack Mindset</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Mengintegrasikan UI responsif dengan logika backend dan manajemen relasi database.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center mb-3">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Bot & Automation</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Membangun bot Node.js berkinerja tinggi dengan Baileys WhatsApp & discord.js.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center mb-3">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Security & DevOps</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sertifikasi Cyber Security (KOMDIGI 2025) dan alur kontainerisasi Docker.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SKILLS SECTION ================= -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-24">
+            <!-- Section Header -->
+            <div class="reveal mb-12">
+                <p class="text-xs font-mono-code uppercase tracking-wider text-emerald-500 font-semibold">// 02. Technical Arsenal</p>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                    Skills & Technologies
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+                    Kategori teknologi nyata yang digunakan dalam pengembangan web, otomasi backend, dan sistem database. Bebas dari persentase palsu.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+
+                <!-- Category 1: Frontend -->
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Frontend</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">UI & Web Layouts</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">HTML5</span>
+                            <span class="text-xs font-mono-code text-slate-400">Semantic</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">CSS3</span>
+                            <span class="text-xs font-mono-code text-slate-400">Responsive</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">JavaScript</span>
+                            <span class="text-xs font-mono-code text-emerald-500">ES6+ / DOM</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">Tailwind CSS</span>
+                            <span class="text-xs font-mono-code text-emerald-500">Utility First</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Backend -->
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="p-2.5 rounded-xl bg-blue-500/10 text-blue-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Backend</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Runtimes & Frameworks</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/node-js.png" alt="Node.js" class="w-4 h-4 object-contain">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Node.js</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-emerald-500">Runtime & Bots</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">PHP</span>
+                            <span class="text-xs font-mono-code text-slate-400">Core Logic</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/laravel-logo.png" alt="Laravel" class="w-4 h-4 object-contain">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Laravel</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-emerald-500">MVC Web</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Database (with PostgreSQL mandatory) -->
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Database</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Storage & Relational</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-semibold text-emerald-600 dark:text-emerald-400">PostgreSQL</span>
+                            <span class="text-xs font-mono-code text-emerald-500">Advanced SQL</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-medium text-slate-700 dark:text-slate-200">MySQL</span>
+                            <span class="text-xs font-mono-code text-slate-400">Relational SQL</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/mongodb.png" alt="MongoDB" class="w-4 h-4 object-contain">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">MongoDB</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-slate-400">NoSQL JSON</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 4: DevOps / Tools (with Docker mandatory) -->
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="p-2.5 rounded-xl bg-purple-500/10 text-purple-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">DevOps / Tools</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Containers & Workflow</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between text-sm">
+                            <span class="font-semibold text-emerald-600 dark:text-emerald-400">Docker</span>
+                            <span class="text-xs font-mono-code text-emerald-500">Containers</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/github.png" alt="Git" class="w-4 h-4 object-contain dark:invert">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Git & GitHub</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-slate-400">VCS</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/vscode.png" alt="VS Code" class="w-4 h-4 object-contain">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">VS Code</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-slate-400">IDE</span>
+                        </li>
+                        <li class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="./assets/xampp.png" alt="XAMPP" class="w-4 h-4 object-contain">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">XAMPP</span>
+                            </div>
+                            <span class="text-xs font-mono-code text-slate-400">Stack</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= WHAT I'VE BUILT / PROJECT SHOWCASE ================= -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-24">
+            <!-- Section Header -->
+            <div class="reveal mb-14">
+                <p class="text-xs font-mono-code uppercase tracking-wider text-emerald-500 font-semibold">// 03. What I've Built</p>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                    Featured Bot Platforms & Architecture
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-3xl">
+                    Dua proyek otomasi utama berbasis Node.js yang saya bangun dari awal dengan fokus pada kehandalan, perlindungan cooldown, dan arsitektur sistem modular.
+                </p>
+            </div>
+
+            <div class="space-y-12">
+
+                <!-- PROJECT 01: YOROZU DISCORD BOT (FEATURED LARGE PRESENTATION) -->
+                <article class="reveal rounded-3xl overflow-hidden glass-panel border border-slate-200 dark:border-white/10 card-hover group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                        
+                        <!-- Left: Rich Info -->
+                        <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-xs font-mono-code mb-3">
+                                    <span class="text-emerald-500 font-bold transition-transform duration-300 group-hover:translate-x-1">01 / FEATURED SHOWCASE</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20"></span>
+                                    <span class="text-slate-500 dark:text-slate-400">Multi-Purpose Server Bot</span>
+                                </div>
+
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                                    Yorozu Discord Bot
+                                </h3>
+
+                                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
+                                    Bot Discord serba-bisa yang dirancang untuk mengelola dan mengotomasi komunitas server secara menyeluruh. Dibangun dengan Node.js dan discord.js dengan penekanan pada permission safety dan stabilitas multi-server.
+                                </p>
+
+                                <!-- Core Capabilities List -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-6 text-xs text-slate-600 dark:text-slate-300">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>One-command server setup</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Secure OTP verification</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Self-service roles & Tickets</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Temporary voice channels</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Bilingual ID/EN responses</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Multi-server & status config</span>
+                                    </div>
+                                </div>
+
+                                <!-- Technology Tags -->
+                                <div class="flex flex-wrap gap-2 pt-2">
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Node.js</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">discord.js</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300">REST API</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300">Automation</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Link (Verified URL) -->
+                            <div class="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+                                <a href="https://github.com/Yuuzaann/yorozu-discord-bot" target="_blank" rel="noopener noreferrer" class="btn-interaction inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-95 shadow-md transition-all">
+                                    <img src="./assets/github.png" alt="" class="w-4 h-4 dark:invert-0 invert">
+                                    <span>View on GitHub</span>
+                                    <svg class="w-4 h-4 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                                <span class="text-xs font-mono-code text-slate-400">Yuuzaann/yorozu-discord-bot</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: Custom Terminal & UI Embed Preview (Authentic Developer Presentation) -->
+                        <div class="lg:col-span-5 bg-slate-950 p-6 sm:p-8 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-white/10 font-mono-code text-xs">
+                            <div class="rounded-xl bg-[#0e1626] border border-white/10 p-4 shadow-xl space-y-4">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                        <span class="text-emerald-400 font-semibold">Yorozu Gateway</span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400">discord.js v14</span>
+                                </div>
+
+                                <div class="space-y-2 text-slate-300 text-[11px]">
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-emerald-500">
+                                        <span class="text-emerald-400">❯ /setup</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">Automated channels, roles & category architecture initialized.</p>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-blue-500">
+                                        <span class="text-blue-400">❯ /verify (OTP)</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">Captcha & security role assignment completed.</p>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-purple-500">
+                                        <span class="text-purple-400">❯ /ticket-panel</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">Interactive button support queue active.</p>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                                    <span>Status: <span class="text-emerald-400">Serving Active Guilds</span></span>
+                                    <span>Locale: <span class="text-cyan-400">ID / EN</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- PROJECT 02: YOROZU WHATSAPP BOT (ALTERNATE WORKFLOW PRESENTATION) -->
+                <article class="reveal rounded-3xl overflow-hidden glass-panel border border-slate-200 dark:border-white/10 card-hover group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                        
+                        <!-- Left: Custom Media Pipeline & Execution Console (Authentic Developer Presentation) -->
+                        <div class="lg:col-span-5 bg-slate-950 p-6 sm:p-8 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-white/10 font-mono-code text-xs order-2 lg:order-1">
+                            <div class="rounded-xl bg-[#0e1626] border border-white/10 p-4 shadow-xl space-y-4">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                        <span class="text-emerald-400 font-semibold">Baileys Socket Core</span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400">Node.js Engine</span>
+                                </div>
+
+                                <div class="space-y-2 text-slate-300 text-[11px]">
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-emerald-500">
+                                        <span class="text-emerald-400">❯ QueueManager:</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">Concurrent job limit [OK] • Duplicate request guard [ACTIVE]</p>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-amber-500">
+                                        <span class="text-amber-400">❯ MediaStream:</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">yt-dlp + FFmpeg conversion pipeline • Temp file cleanup [AUTO]</p>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-black/40 border-l-2 border-cyan-500">
+                                        <span class="text-cyan-400">❯ CooldownProtocol:</span>
+                                        <p class="text-slate-400 text-[10px] mt-0.5">Per-command & Global cooldowns active • Auto-reconnect [STANDBY]</p>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                                    <span>Sockets: <span class="text-emerald-400">Multi-Device Auth</span></span>
+                                    <span>Jobs: <span class="text-amber-400">Auto Cleansed</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Rich Info -->
+                        <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between order-1 lg:order-2">
+                            <div>
+                                <div class="flex items-center gap-3 text-xs font-mono-code mb-3">
+                                    <span class="text-emerald-500 font-bold transition-transform duration-300 group-hover:translate-x-1">02 / AUTOMATION BOT</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20"></span>
+                                    <span class="text-slate-500 dark:text-slate-400">WhatsApp Automation & Downloader</span>
+                                </div>
+
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                                    Yorozu WhatsApp Bot
+                                </h3>
+
+                                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
+                                    WhatsApp bot berkemampuan tinggi yang dibangun di atas Node.js dan Baileys. Dirancang khusus untuk memproses pengunduhan media, pembuatan stiker dinamis, dan perlindungan anti-spam melalui arsitektur antrean yang terstruktur.
+                                </p>
+
+                                <!-- Core Capabilities List -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-6 text-xs text-slate-600 dark:text-slate-300">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>YouTube Audio & Video Downloader</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>TikTok Video & Photo Carousel</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Sticker & Meme Text Generator</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Per-command & Global cooldowns</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Duplicate request protection</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Auto-reconnect & Temp cleanup</span>
+                                    </div>
+                                </div>
+
+                                <!-- Technology Tags -->
+                                <div class="flex flex-wrap gap-2 pt-2">
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Node.js</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Baileys</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300">FFmpeg</span>
+                                    <span class="px-3 py-1 rounded-lg text-xs font-mono-code bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300">yt-dlp</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Link (Verified URL) -->
+                            <div class="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+                                <a href="https://github.com/Yuuzaann/yorozu-whatsapp-bot" target="_blank" rel="noopener noreferrer" class="btn-interaction inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-95 shadow-md transition-all">
+                                    <img src="./assets/github.png" alt="" class="w-4 h-4 dark:invert-0 invert">
+                                    <span>View on GitHub</span>
+                                    <svg class="w-4 h-4 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                                <span class="text-xs font-mono-code text-slate-400">Yuuzaann/yorozu-whatsapp-bot</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= CREDENTIALS SECTION ================= -->
+        <section id="credentials" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-24">
+            <!-- Section Header -->
+            <div class="reveal mb-12">
+                <p class="text-xs font-mono-code uppercase tracking-wider text-emerald-500 font-semibold">// 04. Certifications & Honors</p>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                    Verified Credentials
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+                    Sertifikasi resmi pemerintah Republik Indonesia yang telah diselesaikan.
+                </p>
+            </div>
+
+            <!-- Certificate Card -->
+            <div class="reveal-scale rounded-3xl glass-panel border border-slate-200 dark:border-white/10 overflow-hidden card-hover">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                    <!-- Certificate Image Preview -->
+                    <div class="lg:col-span-6 p-6 sm:p-8 flex justify-center bg-slate-100/50 dark:bg-white/[0.02]">
+                        <div class="relative max-w-md w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-white/10 cursor-pointer group lightbox-trigger" data-img="./assets/achievement.png" data-title="Basic Cyber Security — Komdigi Digital Talent Scholarship 2025">
+                            <img src="./assets/achievement.png" alt="Sertifikat Pelatihan Basic Cyber Security - Arya Permadi" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-900 shadow-md">Click to view full certificate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Metadata & Verification Info -->
+                    <div class="lg:col-span-6 p-6 sm:p-8 space-y-5">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-code bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Verified Certificate</span>
+                        </div>
+
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                            Basic Cyber Security untuk Pelajar Sekolah Menengah
+                        </h3>
+
+                        <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <p class="flex items-start gap-2">
+                                <strong class="text-slate-900 dark:text-white min-w-28">Penyelenggara:</strong>
+                                <span>Kementerian Komunikasi dan Digital (KOMDIGI) — Thematic Academy</span>
+                            </p>
+                            <p class="flex items-start gap-2">
+                                <strong class="text-slate-900 dark:text-white min-w-28">Program:</strong>
+                                <span>Digital Talent Scholarship 2025 (BPSDMP Bandung)</span>
+                            </p>
+                            <p class="flex items-start gap-2">
+                                <strong class="text-slate-900 dark:text-white min-w-28">Penerima:</strong>
+                                <span class="font-semibold text-emerald-500">Arya Permadi</span>
+                            </p>
+                            <p class="flex items-start gap-2">
+                                <strong class="text-slate-900 dark:text-white min-w-28">Tanggal:</strong>
+                                <span>Mei 2025 (8 Jam Pelatihan)</span>
+                            </p>
+                        </div>
+
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-200/80 dark:border-white/10 pt-4">
+                            Materi meliputi pemahaman dasar keamanan siber, identifikasi kerentanan digital, higiene keamanan kata sandi, dan langkah-langkah mitigasi pertahanan data.
+                        </p>
+
+                        <div class="pt-2">
+                            <button type="button" class="lightbox-trigger btn-interaction inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition-opacity" data-img="./assets/achievement.png" data-title="Basic Cyber Security Certificate - Arya Permadi">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>Inspect Full Certificate</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT SECTION ================= -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-24">
+            <!-- Section Header -->
+            <div class="reveal mb-12">
+                <p class="text-xs font-mono-code uppercase tracking-wider text-emerald-500 font-semibold">// 05. Get In Touch</p>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                    Let's Connect & Collaborate
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+                    Terbuka untuk diskusi proyek web, kolaborasi bot otomasi, maupun peluang karir/magang.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Quick Direct Contact Info -->
+                <div class="lg:col-span-5 space-y-6 reveal-left">
+                    <!-- Copy Email Direct Card -->
+                    <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                        <span class="text-xs font-mono-code text-emerald-500 uppercase tracking-wider font-semibold">Direct Email</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Send a Message</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                            Klik tombol di bawah untuk menyalin alamat email langsung ke clipboard Anda.
+                        </p>
+                        <div class="mt-4 flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                            <span class="text-xs sm:text-sm font-mono-code text-slate-700 dark:text-slate-200 truncate" id="contactEmailDisplay">arya.permadi.dev@gmail.com</span>
+                            <button id="contactCopyEmailBtn" type="button" class="relative ml-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white transition-colors btn-interaction" title="Copy email">
+                                <span id="contactCopyBtnLabel">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links List -->
+                    <div class="p-6 rounded-2xl glass-panel border border-slate-200 dark:border-white/10 card-hover">
+                        <span class="text-xs font-mono-code text-emerald-500 uppercase tracking-wider font-semibold">Online Presence</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Connect on Platforms</h3>
+                        <div class="grid grid-cols-2 gap-3 mt-4">
+                            <a href="https://github.com/Yuuzaann" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/5 hover:border-emerald-500/50 transition-all hover:-translate-y-1">
+                                <img src="./assets/github.png" alt="GitHub" class="w-5 h-5 dark:invert">
+                                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">GitHub</span>
+                            </a>
+                            <a href="https://www.instagram.com/xydutz_/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/5 hover:border-emerald-500/50 transition-all hover:-translate-y-1">
+                                <img src="./assets/instagram.png" alt="Instagram" class="w-5 h-5">
+                                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">Instagram</span>
+                            </a>
+                            <a href="https://x.com/Yuuzaann_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/5 hover:border-emerald-500/50 transition-all hover:-translate-y-1">
+                                <img src="./assets/X.png" alt="X" class="w-5 h-5 dark:invert">
+                                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">X (Twitter)</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@yuuzaann_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/5 hover:border-emerald-500/50 transition-all hover:-translate-y-1">
+                                <img src="./assets/tiktok.png" alt="TikTok" class="w-5 h-5">
+                                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Static Contact Form (Formspree) -->
+                <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl glass-panel border border-slate-200 dark:border-white/10 shadow-lg reveal-right">
+                    <form id="contactForm" action="https://formspree.io/f/xrekaner" method="POST" class="space-y-5">
+                        <input type="hidden" name="_subject" value="New Message from Arya Permadi Portfolio">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Your Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Your Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Opportunity" class="w-full px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Your Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Hello Arya, I'd like to discuss a project..." class="w-full px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-[#131d31] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                <span>Delivered directly via Formspree</span>
+                            </p>
+
+                            <button type="submit" id="formSubmitBtn" class="btn-interaction inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 transition-all duration-200 w-full sm:w-auto">
+                                <span id="formSubmitLabel">Send Message</span>
+                                <svg id="formSubmitIcon" class="w-4 h-4 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Status Message Alert Container -->
+                        <div id="formStatusMsg" class="hidden p-4 rounded-xl text-xs sm:text-sm font-medium transition-all"></div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-slate-200 dark:border-white/10 bg-white/50 dark:bg-[#090d16]/80 backdrop-blur-md py-8 px-4 sm:px-6 lg:px-8 mt-12 transition-colors">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-slate-800 dark:text-white">Sadutzz</span>
+                <span>•</span>
+                <span>Arya Permadi © <span id="year"></span></span>
+            </div>
+
+            <p class="text-center sm:text-right">
+                Mahasiswa Teknik Informatika • Built with <span class="text-emerald-500 font-medium">Tailwind CSS & Vanilla JavaScript</span>
+            </p>
+
+            <button id="backToTopBtn" type="button" class="p-2 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors btn-interaction" aria-label="Back to top">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- ================= LIGHTBOX MODAL ================= -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col">
+            <div class="px-5 py-3.5 bg-slate-900/90 border-b border-white/10 flex items-center justify-between">
+                <h4 id="lightboxTitle" class="text-sm font-semibold text-white truncate">Preview</h4>
+                <button id="lightboxCloseBtn" type="button" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors" aria-label="Close preview">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2 flex items-center justify-center max-h-[80vh] overflow-auto bg-slate-950">
+                <img id="lightboxImg" src="" alt="Enlarged preview" class="max-w-full max-h-[75vh] object-contain rounded-lg">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="./script.js"></script>
+
+</body>
+</html>
+
+
